@@ -24,4 +24,6 @@ export const webRoutes = [
 
   { method: "GET", path: "/track/{id}/edittrack/{trackid}", config: trackController.index },
   { method: "POST", path: "/track/{id}/updatetrack/{trackid}", config: trackController.update },
+
+  { method: "GET", path: "/{param*}", handler: { directory: { path: "./public" } }, options: { auth: false } },
 ];
