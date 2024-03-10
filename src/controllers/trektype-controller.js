@@ -26,7 +26,7 @@ export const trektypeController = {
       const newPlacemark = {
         title: request.payload.title,
         details: request.payload.details,
-        location: Number(request.payload.location),
+        location: request.payload.location,
       };
       await db.placemarkStore.addPlacemark(trektype._id, newPlacemark);
       return h.redirect(`/trektype/${trektype._id}`);

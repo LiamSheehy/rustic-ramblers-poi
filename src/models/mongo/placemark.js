@@ -5,7 +5,7 @@ const { Schema } = Mongoose;
 const placemarkSchema = new Schema({
   title: String,
   details: String,
-  location: Number,
+  location: String,
   trektypeid: {
     type: Schema.Types.ObjectId,
     ref: "Trektype",

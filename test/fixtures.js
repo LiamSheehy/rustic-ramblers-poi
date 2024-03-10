@@ -35,7 +35,7 @@ export const mozart = {
 export const concerto = {
   "title": "Violin Concerto No. 3",
   "details": "Mozart",
-  "location": 15
+  "location": "Kerry"
 };
 
 
@@ -59,16 +59,16 @@ export const testPlacemarks = [
   {
     "title": "Piano Sonata No. 3",
     "details": "Beethoven",
-    "location": 5
+    "location": "Kerry"
   },
   {
     "title": "Piano Sonata No. 7",
     "details": "Beethoven",
-    "location": 6
+    "location": "Kerry"
   },
   {
     "title": "Piano Sonata No. 10",
     "details": "Beethoven",
-    "location": 4
+    "location": "Kerry"
   }
 ];

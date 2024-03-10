@@ -4,7 +4,7 @@ import { db } from "../models/db.js";
 export const placemarkController = {
   index: {
     handler: async function (request, h) {
-      const trektype = await db.trektypeStore.getTrekTypeById(request.params.id);
+      const trektype = await db.trektypeStore.getTrektypeById(request.params.id);
       const placemark = await db.placemarkStore.getPlacemarkById(request.params.placemarkid);
       const viewData = {
         title: "Edit Trek",
@@ -28,7 +28,7 @@ export const placemarkController = {
       const newPlacemark = {
         title: request.payload.title,
         details: request.payload.details,
-        location: Number(request.payload.location),
+        location: request.payload.location,
       };
       await db.placemarkStore.updatePlacemark(placemark, newPlacemark);
       return h.redirect(`/trektype/${request.params.id}`);

@@ -25,7 +25,7 @@ export const PlacemarkSpec = Joi.object()
   .keys({
     title: Joi.string().required().example("Piano Sonata No. 7"),
     details: Joi.string().required().example("Beethoven"),
-    location: Joi.string().allow("").optional().example(12),
+    location: Joi.string().required().example("Kerry"),
     trektypeid: IdSpec,
   })
   .label("Placemark");
