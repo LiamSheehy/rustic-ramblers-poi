@@ -2,7 +2,7 @@ import { aboutController } from "./controllers/about-controller.js";
 import { accountsController } from "./controllers/accounts-controller.js";
 import { dashboardController } from "./controllers/dashboard-controller.js";
 import { trektypeController } from "./controllers/trektype-controller.js";
-import { placementController } from "./controllers/placement-controller.js";
+import { placemarkController } from "./controllers/placemark-controller.js";
 
 export const webRoutes = [
   { method: "GET", path: "/", config: accountsController.index },
@@ -19,11 +19,11 @@ export const webRoutes = [
   { method: "GET", path: "/dashboard/deletetrektype/{id}", config: dashboardController.deleteTrektype },
 
   { method: "GET", path: "/trektype/{id}", config: trektypeController.index },
-  { method: "POST", path: "/trektype/{id}/addplacement", config: trektypeController.addPlacement },
-  { method: "GET", path: "/trektype/{id}/deleteplacement/{placementid}", config: trektypeController.deletePlacement },
+  { method: "POST", path: "/trektype/{id}/addplacemark", config: trektypeController.addPlacemark },
+  { method: "GET", path: "/trektype/{id}/deleteplacemark/{placemarkid}", config: trektypeController.deletePlacemark },
 
-  { method: "GET", path: "/placement/{id}/editplacement/{placementid}", config: placementController.index },
-  { method: "POST", path: "/placement/{id}/updateplacement/{placementid}", config: placementController.update },
+  { method: "GET", path: "/placemark/{id}/editplacemark/{placemarkid}", config: placemarkController.index },
+  { method: "POST", path: "/placemark/{id}/updateplacemark/{placemarkid}", config: placemarkController.update },
 
   { method: "GET", path: "/{param*}", handler: { directory: { path: "./public" } }, options: { auth: false } },
 ];
