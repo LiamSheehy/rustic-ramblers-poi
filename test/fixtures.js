@@ -33,7 +33,7 @@ export const mozart = {
 };
 
 export const concerto = {
-  "trek": "Violin Concerto No. 3",
+  "title": "Violin Concerto No. 3",
   "details": "Mozart",
   "location": 15
 };
@@ -57,17 +57,17 @@ export const testTrektypes = [
 
 export const testPlacemarks = [
   {
-    "trek": "Piano Sonata No. 3",
+    "title": "Piano Sonata No. 3",
     "details": "Beethoven",
     "location": 5
   },
   {
-    "trek": "Piano Sonata No. 7",
+    "title": "Piano Sonata No. 7",
     "details": "Beethoven",
     "location": 6
   },
   {
-    "trek": "Piano Sonata No. 10",
+    "title": "Piano Sonata No. 10",
     "details": "Beethoven",
     "location": 4
   }

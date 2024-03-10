@@ -1,9 +1,9 @@
 import { assert } from "chai";
 import { assertSubset } from "../test-utils.js";
-import { playtimeService } from "./playtime-service.js";
-import { maggie, mozart, testTrektypes, testPlacements, concerto } from "../fixtures.js";
+import { rusticramblersService } from "./rusticramblers-service.js";
+import { maggie, mozart, testTrektypes, testPlacemarks, concerto } from "../fixtures.js";
 
-suite("Placement API tests", () => {
+suite("Placemark API tests", () => {
   let user = null;
   let beethovenSonatas = null;
 
@@ -12,13 +12,13 @@ suite("Placement API tests", () => {
 
   teardown(async () => {});
 
-  test("create placement", async () => {
+  test("create placemark", async () => {
   });
 
-  test("create Multiple placementApi", async () => {
+  test("create Multiple placemarkApi", async () => {
   });
 
-  test("Delete Placement", async () => {
+  test("Delete Placemark", async () => {
   });
 
   test("test denormalised trektype", async () => {

@@ -2,7 +2,7 @@ import Mongoose from "mongoose";
 
 const { Schema } = Mongoose;
 
-const playlistSchema = new Schema({
+const trektypeSchema = new Schema({
   title: String,
   userid: {
     type: Schema.Types.ObjectId,
@@ -10,4 +10,4 @@ const playlistSchema = new Schema({
   },
 });
 
-export const Trektype = Mongoose.model("Trektype", playlistSchema);
+export const Trektype = Mongoose.model("Trektype", trektypeSchema);

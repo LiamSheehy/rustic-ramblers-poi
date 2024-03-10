@@ -27,8 +27,8 @@ export const placemarkController = {
       const placemark = await db.placemarkStore.getPlacemarkById(request.params.placemarkid);
       const newPlacemark = {
         title: request.payload.title,
-        artist: request.payload.artist,
-        duration: Number(request.payload.duration),
+        details: request.payload.details,
+        location: Number(request.payload.location),
       };
       await db.placemarkStore.updatePlacemark(placemark, newPlacemark);
       return h.redirect(`/trektype/${request.params.id}`);

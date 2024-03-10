@@ -24,8 +24,8 @@ export const UserArray = Joi.array().items(UserSpecPlus).label("UserArray");
 export const PlacemarkSpec = Joi.object()
   .keys({
     title: Joi.string().required().example("Piano Sonata No. 7"),
-    artist: Joi.string().required().example("Beethoven"),
-    duration: Joi.number().allow("").optional().example(12),
+    details: Joi.string().required().example("Beethoven"),
+    location: Joi.string().allow("").optional().example(12),
     trektypeid: IdSpec,
   })
   .label("Placemark");
