@@ -1,4 +1,4 @@
-# full-stack-1-poi
+# Rustic Ramblers 
 Full stack project for a Points of interest assignment
 
 ## Introduction
