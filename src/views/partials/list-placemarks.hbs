@@ -1,32 +1,32 @@
 <table class="table is-fullwidth">
   <thead>
     <tr>
-      <th>Track</th>
-      <th>Artist</th>
-      <th>Duration</th>
+      <th>Placemark</th>
+      <th>Details</th>
+      <th>Location</th>
       <th></th>
       <th></th>
     </tr>
   </thead>
   <tbody>
-    {{#each playlist.tracks}}
+    {{#each trektype.placemarks}}
       <tr>
         <td>
-          {{title}}
+          {{trek}}
         </td>
         <td>
-          {{artist}}
+          {{details}}
         </td>
         <td>
-          {{duration}}
+          {{location}}
         </td>
         <td>
-          <a href="/track/{{../playlist._id}}/edittrack/{{_id}}" class="ui icon button">
+          <a href="/placemark/{{../trektype._id}}/editplacemark/{{_id}}" class="ui icon button">
             <i class="fas fa-edit"></i>
           </a>
         </td>
         <td>
-          <a href="/playlist/{{../playlist._id}}/deletetrack/{{_id}}" class="ui icon button">
+          <a href="/trektype/{{../trektype._id}}/deleteplacemark/{{_id}}" class="ui icon button">
             <i class="fas fa-trash"></i>
           </a>
         </td>

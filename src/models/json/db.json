@@ -22,33 +22,33 @@
       "_id": "7c8c5c98-2203-41cf-9848-b28a58ce1ae9"
     }
   ],
-  "playlists": [
+  "trektypes": [
     {
       "title": "Mozart Favourites",
       "_id": "c61a37a3-fc2c-4635-95cd-4acde57de84f"
     }
   ],
-  "tracks": [
+  "placemarks": [
     {
       "title": "Piano Sonata No. 3",
       "artist": "Beethoven",
       "duration": 5,
       "_id": "5d9cebe0-afbd-4fc8-90a0-f3900bf1a013",
-      "playlistid": "c61a37a3-fc2c-4635-95cd-4acde57de84f"
+      "trektypeid": "c61a37a3-fc2c-4635-95cd-4acde57de84f"
     },
     {
       "title": "Piano Sonata No. 7",
       "artist": "Beethoven",
       "duration": 6,
       "_id": "1f776a68-a8dd-4103-8c6c-4dcddeb37f57",
-      "playlistid": "c61a37a3-fc2c-4635-95cd-4acde57de84f"
+      "trektypeid": "c61a37a3-fc2c-4635-95cd-4acde57de84f"
     },
     {
       "title": "Piano Sonata No. 10",
       "artist": "Beethoven",
       "duration": 4,
       "_id": "47faa1cf-fc71-411f-a8b0-212fc638fc49",
-      "playlistid": "c61a37a3-fc2c-4635-95cd-4acde57de84f"
+      "trektypeid": "c61a37a3-fc2c-4635-95cd-4acde57de84f"
     }
   ]
 }

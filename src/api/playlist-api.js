@@ -1,25 +1,25 @@
 import Boom from "@hapi/boom";
-import { IdSpec, PlaylistArraySpec, PlaylistSpec, PlaylistSpecPlus } from "../models/joi-schemas.js";
+import { IdSpec, TrektypeArraySpec, TrektypeSpec, TrektypeSpecPlus } from "../models/joi-schemas.js";
 import { db } from "../models/db.js";
 import { validationError } from "./logger.js";
 
-export const playlistApi = {
+export const trektypeApi = {
   find: {
     auth: {
       strategy: "jwt",
     },
     handler: async function (request, h) {
       try {
-        const playlists = await db.playlistStore.getAllPlaylists();
-        return playlists;
+        const trektypes = await db.trektypeStore.getAllTrektypes();
+        return trektypes;
       } catch (err) {
         return Boom.serverUnavailable("Database Error");
       }
     },
     tags: ["api"],
-    response: { schema: PlaylistArraySpec, failAction: validationError },
-    description: "Get all playlists",
-    notes: "Returns all playlists",
+    response: { schema: TrektypeArraySpec, failAction: validationError },
+    description: "Get all trektypes",
+    notes: "Returns all trektypes",
   },
 
   findOne: {
@@ -28,20 +28,20 @@ export const playlistApi = {
     },
     async handler(request) {
       try {
-        const playlist = await db.playlistStore.getPlaylistById(request.params.id);
-        if (!playlist) {
-          return Boom.notFound("No Playlist with this id");
+        const trektype = await db.trektypeStore.getTrektypeById(request.params.id);
+        if (!trektype) {
+          return Boom.notFound("No Trektype with this id");
         }
-        return playlist;
+        return trektype;
       } catch (err) {
-        return Boom.serverUnavailable("No Playlist with this id");
+        return Boom.serverUnavailable("No Trektype with this id");
       }
     },
     tags: ["api"],
-    description: "Find a Playlist",
-    notes: "Returns a playlist",
+    description: "Find a Trektype",
+    notes: "Returns a trektype",
     validate: { params: { id: IdSpec }, failAction: validationError },
-    response: { schema: PlaylistSpecPlus, failAction: validationError },
+    response: { schema: TrektypeSpecPlus, failAction: validationError },
   },
 
   create: {
@@ -50,21 +50,21 @@ export const playlistApi = {
     },
     handler: async function (request, h) {
       try {
-        const playlist = request.payload;
-        const newPlaylist = await db.playlistStore.addPlaylist(playlist);
-        if (newPlaylist) {
-          return h.response(newPlaylist).code(201);
+        const trektype = request.payload;
+        const newTrektype = await db.trektypeStore.addTrektype(trektype);
+        if (newTrektype) {
+          return h.response(newTrektype).code(201);
         }
-        return Boom.badImplementation("error creating playlist");
+        return Boom.badImplementation("error creating trektype");
       } catch (err) {
         return Boom.serverUnavailable("Database Error");
       }
     },
     tags: ["api"],
-    description: "Create a Playlist",
-    notes: "Returns the newly created playlist",
-    validate: { payload: PlaylistSpec, failAction: validationError },
-    response: { schema: PlaylistSpecPlus, failAction: validationError },
+    description: "Create a Trektype",
+    notes: "Returns the newly created trektype",
+    validate: { payload: TrektypeSpec, failAction: validationError },
+    response: { schema: TrektypeSpecPlus, failAction: validationError },
   },
 
   deleteOne: {
@@ -73,18 +73,18 @@ export const playlistApi = {
     },
     handler: async function (request, h) {
       try {
-        const playlist = await db.playlistStore.getPlaylistById(request.params.id);
-        if (!playlist) {
-          return Boom.notFound("No Playlist with this id");
+        const trektype = await db.trektypeStore.getTrektypeById(request.params.id);
+        if (!trektype) {
+          return Boom.notFound("No Trektype with this id");
         }
-        await db.playlistStore.deletePlaylistById(playlist._id);
+        await db.trektypeStore.deleteTrektypeById(trektype._id);
         return h.response().code(204);
       } catch (err) {
-        return Boom.serverUnavailable("No Playlist with this id");
+        return Boom.serverUnavailable("No Trektype with this id");
       }
     },
     tags: ["api"],
-    description: "Delete a playlist",
+    description: "Delete a trektype",
     validate: { params: { id: IdSpec }, failAction: validationError },
   },
 
@@ -94,13 +94,13 @@ export const playlistApi = {
     },
     handler: async function (request, h) {
       try {
-        await db.playlistStore.deleteAllPlaylists();
+        await db.trektypeStore.deleteAllTrektypes();
         return h.response().code(204);
       } catch (err) {
         return Boom.serverUnavailable("Database Error");
       }
     },
     tags: ["api"],
-    description: "Delete all PlaylistApi",
+    description: "Delete all TrektypeApi",
   },
 };

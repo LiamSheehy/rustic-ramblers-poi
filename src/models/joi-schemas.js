@@ -21,33 +21,33 @@ export const UserSpecPlus = UserSpec.keys({
 
 export const UserArray = Joi.array().items(UserSpecPlus).label("UserArray");
 
-export const TrackSpec = Joi.object()
+export const PlacemarkSpec = Joi.object()
   .keys({
     title: Joi.string().required().example("Piano Sonata No. 7"),
     artist: Joi.string().required().example("Beethoven"),
     duration: Joi.number().allow("").optional().example(12),
-    playlistid: IdSpec,
+    trektypeid: IdSpec,
   })
-  .label("Track");
+  .label("Placemark");
 
-export const TrackSpecPlus = TrackSpec.keys({
+export const PlacemarkSpecPlus = PlacemarkSpec.keys({
   _id: IdSpec,
   __v: Joi.number(),
-}).label("TrackPlus");
+}).label("PlacemarkPlus");
 
-export const TrackArraySpec = Joi.array().items(TrackSpecPlus).label("TrackArray");
+export const PlacemarkArraySpec = Joi.array().items(PlacemarkSpecPlus).label("PlacemarkArray");
 
-export const PlaylistSpec = Joi.object()
+export const TrektypeSpec = Joi.object()
   .keys({
     title: Joi.string().required().example("Beethoven Sonatas"),
     userid: IdSpec,
-    tracks: TrackArraySpec,
+    placemarks: PlacemarkArraySpec,
   })
-  .label("Playlist");
+  .label("Trektype");
 
-export const PlaylistSpecPlus = PlaylistSpec.keys({
+export const TrektypeSpecPlus = TrektypeSpec.keys({
   _id: IdSpec,
   __v: Joi.number(),
-}).label("PlaylistPlus");
+}).label("TrektypePlus");
 
-export const PlaylistArraySpec = Joi.array().items(PlaylistSpecPlus).label("PlaylistArray");
+export const TrektypeArraySpec = Joi.array().items(TrektypeSpecPlus).label("TrektypeArray");

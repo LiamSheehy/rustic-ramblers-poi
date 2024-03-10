@@ -26,7 +26,7 @@ if (result.error) {
 
 const swaggerOptions = {
   info: {
-    title: "Playtime API",
+    title: "Rustic Ramblers API",
     version: "0.1",
   },
 };
@@ -73,11 +73,13 @@ async function init() {
     redirectTo: "/",
     validate: accountsController.validate,
   });
+
   server.auth.strategy("jwt", "jwt", {
     key: process.env.cookie_password,
     validate: validate,
     verifyOptions: { algorithms: ["HS256"] },
   });
+  
   server.auth.default("session");
 
   db.init("mongo");

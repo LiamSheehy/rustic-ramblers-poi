@@ -10,4 +10,4 @@ const playlistSchema = new Schema({
   },
 });
 
-export const Playlist = Mongoose.model("Playlist", playlistSchema);
+export const Trektype = Mongoose.model("Trektype", playlistSchema);
