@@ -40,4 +40,28 @@ export const trektypeController = {
       return h.redirect(`/trektype/${trektype._id}`);
     },
   },
+
+  uploadImage: {
+    handler: async function (request, h) {
+      try {
+        const trektype = await db.trektypeStore.getTrektypeById(request.params.id);
+        const file = request.payload.imagefile;
+        if (Object.keys(file).length > 0) {
+          const url = await imageStore.uploadImage(request.payload.imagefile);
+          trektype.img = url;
+          await db.trektypeStore.updateTrektype(trektype);
+        }
+        return h.redirect(`/trektype/${trektype._id}`);
+      } catch (err) {
+        console.log(err);
+        return h.redirect(`/trektype/${trektype._id}`);
+      }
+    },
+    payload: {
+      multipart: true,
+      output: "data",
+      maxBytes: 209715200,
+      parse: true,
+    },
+  },
 };

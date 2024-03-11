@@ -2,8 +2,7 @@ import { EventEmitter } from "events";
 import { assert } from "chai";
 import { rusticramblersService } from "./rusticramblers-service.js";
 import { assertSubset } from "../test-utils.js";
-
-import { maggie, mozart, testTrektypes } from "../fixtures.js";
+import { maggie, place, maggieCredentials, testTrektypes } from "../fixtures.js";
 
 EventEmitter.setMaxListeners(25);
 
@@ -11,22 +10,26 @@ suite("Trektype API tests", () => {
   let user = null;
 
   setup(async () => {
+    rusticramblersService.clearAuth();
+    user = await rusticramblersService.createUser(maggie);
+    await rusticramblersService.authenticate(maggieCredentials);
     await rusticramblersService.deleteAllTrektypes();
     await rusticramblersService.deleteAllUsers();
     user = await rusticramblersService.createUser(maggie);
-    mozart.userid = user._id;
+    await rusticramblersService.authenticate(maggieCredentials);
+    place.userid = user._id;
   });
 
   teardown(async () => {});
 
   test("create trektype", async () => {
-    const returnedTrektype = await rusticramblersService.createTrektype(mozart);
+    const returnedTrektype = await rusticramblersService.createTrektype(place);
     assert.isNotNull(returnedTrektype);
-    assertSubset(mozart, returnedTrektype);
+    assertSubset(place, returnedTrektype);
   });
 
   test("delete a trektype", async () => {
-    const trektype = await rusticramblersService.createTrektype(mozart);
+    const trektype = await rusticramblersService.createTrektype(place);
     const response = await rusticramblersService.deleteTrektype(trektype._id);
     assert.equal(response.status, 204);
     try {

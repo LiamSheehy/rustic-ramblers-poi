@@ -39,5 +39,12 @@ export const trektypeMongoStore = {
 
   async deleteAllTrektypes() {
     await Trektype.deleteMany({});
-  }
+  },
+
+  async updateTrektype(updatedTrektype) {
+    const trektype = await Trektype.findOne({ _id: updatedTrektype._id });
+    trektype.title = updatedTrektype.title;
+    trektype.img = updatedTrektype.img;
+    await trektype.save();
+  },
 };

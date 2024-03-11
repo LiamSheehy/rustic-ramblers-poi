@@ -1,26 +1,26 @@
 import { assert } from "chai";
 import { rusticramblersService } from "./rusticramblers-service.js";
 import { decodeToken } from "../../src/api/jwt-utils.js";
-import { maggie } from "../fixtures.js";
+import { maggie, maggieCredentials } from "../fixtures.js";
 
 suite("Authentication API tests", async () => {
   setup(async () => {
     rusticramblersService.clearAuth();
     await rusticramblersService.createUser(maggie);
-    await rusticramblersService.authenticate(maggie);
+    await rusticramblersService.authenticate(maggieCredentials);
     await rusticramblersService.deleteAllUsers();
   });
 
   test("authenticate", async () => {
     const returnedUser = await rusticramblersService.createUser(maggie);
-    const response = await rusticramblersService.authenticate(maggie);
+    const response = await rusticramblersService.authenticate(maggieCredentials);
     assert(response.success);
     assert.isDefined(response.token);
   });
 
   test("verify Token", async () => {
     const returnedUser = await rusticramblersService.createUser(maggie);
-    const response = await rusticramblersService.authenticate(maggie);
+    const response = await rusticramblersService.authenticate(maggieCredentials);
 
     const userInfo = decodeToken(response.token);
     assert.equal(userInfo.email, returnedUser.email);

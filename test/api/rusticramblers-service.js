@@ -1,5 +1,5 @@
 import axios from "axios";
-import { serviceUrl } from "../fixtures.js";
+import { maggie, serviceUrl } from "../fixtures.js";
 
 export const rusticramblersService = {
   rusticramblersUrl: serviceUrl,
@@ -15,8 +15,12 @@ export const rusticramblersService = {
   },
 
   async getAllUsers() {
-    const res = await axios.get(`${this.rusticramblersUrl}/api/users`);
-    return res.data;
+    try {
+      const res = await axios.get(`${this.rusticramblersUrl}/api/users`);
+      return res.data;
+    } catch (e) {
+      return null;
+    }
   },
 
   async deleteAllUsers() {
@@ -72,5 +76,16 @@ export const rusticramblersService = {
   async deletePlacemark(id) {
     const res = await axios.delete(`${this.rusticramblersUrl}/api/placemarks/${id}`);
     return res.data;
+  },
+
+  async authenticate(user) {
+    const response = await axios.post(`${this.rusticramblersUrl}/api/users/authenticate`, user);
+
+    axios.defaults.headers.common["Authorization"] = "Bearer " + response.data.token;
+    return response.data;
+  },
+
+  async clearAuth() {
+    axios.defaults.headers.common["Authorization"] = "";
   },
 };

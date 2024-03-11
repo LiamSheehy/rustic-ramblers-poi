@@ -4,71 +4,77 @@ export const maggie = {
   firstName: "Maggie",
   lastName: "Simpson",
   email: "maggie@simpson.com",
-  password: "secret"
+  password: "secret",
 };
+
+export const maggieCredentials = {
+  email: "maggie@simpson.com",
+  password: "secret",
+};
+
 
 export const testUsers = [
   {
     firstName: "Homer",
     lastName: "Simpson",
     email: "homer@simpson.com",
-    password: "secret"
+    password: "secret",
   },
   {
     firstName: "Marge",
     lastName: "Simpson",
     email: "marge@simpson.com",
-    password: "secret"
+    password: "secret",
   },
   {
     firstName: "Bart",
     lastName: "Simpson",
     email: "bart@simpson.com",
-    password: "secret"
-  }
+    password: "secret",
+  },
 ];
 
-export const mozart = {
-  title: "Mozart Favourites"
+export const place = {
+  title: "Mountains",
 };
 
-export const concerto = {
-  "title": "Violin Concerto No. 3",
-  "details": "Mozart",
-  "location": "Kerry"
+export const mangerton = {
+  "title": "Mangerton",
+  "details": "8,023M Grade2 climb",
+  "location": "Kerry",
 };
 
 
-export const beethoven = {
-  title: "Mozart Favourites"
+export const trek = {
+  title: "Trek Catetgory"
 };
 
 export const testTrektypes = [
   {
-    title: "Beethoven Sonatas"
+    title: "Mountains",
   },
   {
-    title: "Beethoven Concertos"
+    title: "Hillwalks",
   },
   {
-    title: "Beethoven Symphonies"
-  }
+    title: "Greenways",
+  },
 ];
 
 export const testPlacemarks = [
   {
-    "title": "Piano Sonata No. 3",
-    "details": "Beethoven",
-    "location": "Kerry"
+    "title": "Mangerton",
+    "details": "8,025m Grade 2",
+    "location": "Kerry",
   },
   {
-    "title": "Piano Sonata No. 7",
-    "details": "Beethoven",
-    "location": "Kerry"
+    "title": "Slievenamon",
+    "details": "6,025m Grade 4",
+    "location": "Tipperary",
   },
   {
-    "title": "Piano Sonata No. 10",
-    "details": "Beethoven",
-    "location": "Kerry"
+    "title": "Dungarvan Greenway",
+    "details": "25km Coast line route",
+    "location": "Waterford",
   }
 ];

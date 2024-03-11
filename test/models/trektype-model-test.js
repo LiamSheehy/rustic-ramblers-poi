@@ -1,6 +1,6 @@
 import { assert } from "chai";
 import { db } from "../../src/models/db.js";
-import { testTrektypes, mozart } from "../fixtures.js";
+import { testTrektypes, place } from "../fixtures.js";
 import { assertSubset } from "../test-utils.js";
 
 suite("Trektype Model tests", () => {
@@ -15,8 +15,8 @@ suite("Trektype Model tests", () => {
   });
 
   test("create a trektype", async () => {
-    const trektype = await db.trektypeStore.addTrektype(mozart);
-    assertSubset(mozart, trektype);
+    const trektype = await db.trektypeStore.addTrektype(place);
+    assertSubset(place, trektype);
     assert.isDefined(trektype._id);
   });
 
@@ -29,9 +29,9 @@ suite("Trektype Model tests", () => {
   });
 
   test("get a trektype - success", async () => {
-    const trektype = await db.trektypeStore.addTrektype(mozart);
+    const trektype = await db.trektypeStore.addTrektype(place);
     const returnedTrektype = await db.trektypeStore.getTrektypeById(trektype._id);
-    assertSubset(mozart, trektype);
+    assertSubset(place, trektype);
   });
 
   test("delete One Playist - success", async () => {

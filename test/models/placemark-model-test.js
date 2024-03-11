@@ -1,32 +1,32 @@
 import { assert } from "chai";
 import { db } from "../../src/models/db.js";
-import { testTrektypes, testPlacemarks, beethoven, mozart, concerto, testUsers } from "../fixtures.js";
+import { testTrektypes, testPlacemarks, trek, place, mangerton, testUsers } from "../fixtures.js";
 import { assertSubset } from "../test-utils.js";
 
 suite("Placemark Model tests", () => {
 
-  let beethovenList = null;
+  let trekList = null;
 
   setup(async () => {
-    await db.init("mongo");
+    db.init("mongo");
     await db.trektypeStore.deleteAllTrektypes();
     await db.placemarkStore.deleteAllPlacemarks();
-    beethovenList = await db.trektypeStore.addTrektype(beethoven);
+    trekList = await db.trektypeStore.addTrektype(trek);
     for (let i = 0; i < testPlacemarks.length; i += 1) {
       // eslint-disable-next-line no-await-in-loop
-      testPlacemarks[i] = await db.placemarkStore.addPlacemark(beethovenList._id, testPlacemarks[i]);
+      testPlacemarks[i] = await db.placemarkStore.addPlacemark(trekList._id, testPlacemarks[i]);
     }
   });
 
   test("create single placemark", async () => {
-    const mozartList = await db.trektypeStore.addTrektype(mozart);
-    const placemark = await db.placemarkStore.addPlacemark(mozartList._id, concerto)
+    const placeList = await db.trektypeStore.addTrektype(place);
+    const placemark = await db.placemarkStore.addPlacemark(placeList._id, mangerton)
     assert.isNotNull(placemark._id);
-    assertSubset (concerto, placemark);
+    assertSubset (mangerton, placemark);
   });
 
   test("create multiple placemarkApi", async () => {
-    const placemarks = await db.trektypeStore.getTrektypeById(beethovenList._id);
+    const placemarks = await db.trektypeStore.getTrektypeById(trekList._id);
     assert.equal(testPlacemarks.length, testPlacemarks.length)
   });
 
@@ -39,10 +39,10 @@ suite("Placemark Model tests", () => {
   });
 
   test("get a placemark - success", async () => {
-    const mozartList = await db.trektypeStore.addTrektype(mozart);
-    const placemark = await db.placemarkStore.addPlacemark(mozartList._id, concerto)
+    const placeList = await db.trektypeStore.addTrektype(place);
+    const placemark = await db.placemarkStore.addPlacemark(placeList._id, mangerton)
     const newPlacemark = await db.placemarkStore.getPlacemarkById(placemark._id);
-    assertSubset (concerto, newPlacemark);
+    assertSubset (mangerton, newPlacemark);
   });
 
   test("delete One Placemark - success", async () => {

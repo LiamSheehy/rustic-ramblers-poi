@@ -19,15 +19,19 @@ export const placemarkMemStore = {
   },
 
   async getPlacemarkById(id) {
-    let placemark = placemarks.find((placemark) => placemark._id === id);
-    if (placemark == undefined) {
-      placemark = null;
+    let foundPlacemark = placemarks.find((placemark) => placemark._id === id);
+    if (!foundPlacemark) {
+      foundPlacemark = null;
     }
-    return placemark;
+    return foundPlacemark;
   },
 
   async getTrektypePlacemarks(trektypeId) {
-    return placemarks.filter((placemark) => placemark.trektypeid === trektypeId);
+    let foundPlacemarks = placemarks.filter((placemark) => placemark.trektypeid === trektypeId);
+    if (!foundPlacemarks) {
+      foundPlacemarks = null;
+    }
+    return foundPlacemarks;
   },
 
   async deletePlacemark(id) {

@@ -7,7 +7,7 @@ export const dashboardController = {
       const loggedInUser = request.auth.credentials;
       const trektypes = await db.trektypeStore.getUserTrektypes(loggedInUser._id);
       const viewData = {
-        title: "Playtime Dashboard",
+        title: "Rustic Ramblers Dashboard",
         user: loggedInUser,
         trektypes: trektypes,
       };

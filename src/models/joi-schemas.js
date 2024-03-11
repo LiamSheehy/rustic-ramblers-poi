@@ -23,8 +23,8 @@ export const UserArray = Joi.array().items(UserSpecPlus).label("UserArray");
 
 export const PlacemarkSpec = Joi.object()
   .keys({
-    title: Joi.string().required().example("Piano Sonata No. 7"),
-    details: Joi.string().required().example("Beethoven"),
+    title: Joi.string().required().example("Slievnamon"),
+    details: Joi.string().required().example("Trek"),
     location: Joi.string().required().example("Kerry"),
     trektypeid: IdSpec,
   })
@@ -39,7 +39,7 @@ export const PlacemarkArraySpec = Joi.array().items(PlacemarkSpecPlus).label("Pl
 
 export const TrektypeSpec = Joi.object()
   .keys({
-    title: Joi.string().required().example("Beethoven Sonatas"),
+    title: Joi.string().required().example("Mountains"),
     userid: IdSpec,
     placemarks: PlacemarkArraySpec,
   })
@@ -51,3 +51,10 @@ export const TrektypeSpecPlus = TrektypeSpec.keys({
 }).label("TrektypePlus");
 
 export const TrektypeArraySpec = Joi.array().items(TrektypeSpecPlus).label("TrektypeArray");
+
+export const JwtAuth = Joi.object()
+  .keys({
+    success: Joi.boolean().example("true").required(),
+    token: Joi.string().example("eyJhbGciOiJND.g5YmJisIjoiaGYwNTNjAOhE.gCWGmY5-YigQw0DCBo").required(),
+  })
+  .label("JwtAuth");
